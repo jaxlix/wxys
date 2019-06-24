@@ -1,5 +1,5 @@
 export default {
-    keyWord(state){
-        return state.keyWord;
-    }
+  keyWord (state) {
+    return state.keyWord
+  }
 }

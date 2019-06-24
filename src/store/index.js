@@ -6,29 +6,29 @@ Vue.use(Vuex)
 // import mutations from './mutations'
 
 const stores = new Vuex.Store({
-    state: {
-        keyWord: '', // 搜索关键字
-        dbtype: 'renkou',  // 数据库标识，用于分类搜索
+  state: {
+    keyWord: '', // 搜索关键字
+    dbtype: 'renkou' // 数据库标识，用于分类搜索
+  },
+  getters: {
+    keyWord (state) {
+      return state.keyWord
     },
-    getters: {
-        keyWord(state){
-            return state.keyWord;
-        },
-        dbtype(state){
-            return state.dbtype;
-        }
-    },
-    mutations: {
-        KEYWORD(state, res) {
-            state.keyWord = res;
-        },
-        DBTYPE(state, res) {
-            state.dbtype = res;
-        }
+    dbtype (state) {
+      return state.dbtype
     }
-    // modules: {
-    //     mutations
-    // }
+  },
+  mutations: {
+    KEYWORD (state, res) {
+      state.keyWord = res
+    },
+    DBTYPE (state, res) {
+      state.dbtype = res
+    }
+  }
+  // modules: {
+  //     mutations
+  // }
 })
 
-export default stores;
+export default stores
