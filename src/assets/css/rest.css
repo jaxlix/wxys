@@ -1,0 +1,314 @@
+html {
+	font-size: 62.5%;
+	font-family: Helvetica;
+}
+body {
+	font-size: 1.4rem;
+	background-color: #fff;
+	/*流畅滚动*/
+	-webkit-overflow-scrolling: touch;
+}
+html, body{
+	width: 100%;
+	height: 100%;
+}
+/** 全局reset开始 **/
+body,
+header,
+footer,
+section,
+div,
+span,
+p,
+img,
+a,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+i,
+b,
+u,
+del,
+menu,
+nav,
+fieldset,
+legend,
+article,
+aside,
+details,
+figcaption,
+hgroup,
+pre,
+code,
+form,
+blockquote,
+th,
+td,
+tr,
+hr,
+table,
+img,
+figure,
+button,
+input,
+textarea,
+dt+dd {
+	padding: 0;
+	margin: 0;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: Microsoft Yahei, Helvetica, Arial;
+}
+
+li {
+	list-style: none;
+}
+
+input,
+textarea {
+	-webkit-user-select: auto !important;
+	user-select: auto !important;
+}
+
+:focus {
+	outline: none;
+}
+
+img {
+	vertical-align: middle;
+	border: 0 none;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+section {
+	display: block;
+	margin: 0 auto;
+}
+
+header,
+footer {
+	margin: 0 auto;
+	width: 100%;
+}
+
+em,
+i {
+	font-style: normal;
+}
+
+button,
+input {
+	border: 0 none;
+}
+
+u,
+del {
+	text-decoration: none;
+}
+
+
+/* webkit引擎的浏览器取消默认样式 */
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="password"],
+input[type="text"],
+button {
+	-webkit-appearance: none;
+	outline: none;
+}
+
+
+/*css reset结束*/
+
+/******表单******/
+.form{
+	position: relative;
+	font-size: 1.6rem;
+    line-height: 25px;
+}
+.form:before{
+	content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    z-index: 2;
+}
+.form:after{
+	content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    z-index: 2;
+}
+
+.form-item{
+	padding: 10px 15px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+	align-items: center;
+}
+.form-item:before{
+	content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    left: 15px;
+    z-index: 2;
+}
+.form-item:first-child:before{
+	display: none;
+}
+/*输入框*/
+.form-label{
+	display: block;
+    width: 120px;
+    word-wrap: break-word;
+	word-break: break-all;
+	color: #666;
+}
+.form-label>i{
+	color: #f49c1e;
+}
+.form-input{
+	position: relative;
+	-webkit-box-flex: 1;
+    -webkit-flex: 1;
+	flex: 1;
+	text-align: right;
+}
+.form-input>input{
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
+    font-size: inherit;
+    color: #3c3838;
+    height: 1.47058824em;
+	line-height: 1.47058824;
+	text-align: right;
+	margin-right: 16px;
+}
+.form-input>input::-webkit-input-placeholder{
+	color:#a7a5a5;
+}
+.form-input>input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+	color:#a7a5a5;
+}
+.form-input>input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+	color:#a7a5a5;
+}
+.form-input>input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+	color:#a7a5a5;
+}
+
+.form-item-block{
+	flex-wrap: wrap;
+}
+.form-label-block{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.form-input-block{
+	width: 100%;
+	height: 75px;
+}
+.form-input-block>textarea{
+	width: 100%;
+	height: 100%;
+	border: none;
+	padding: 5px 10px;
+	box-sizing: border-box;
+}
+.form-input-block>textarea::-webkit-input-placeholder{
+	color:#a7a5a5;
+}
+.form-input-block>textarea::-moz-placeholder{   /* Mozilla Firefox 19+ */
+	color:#a7a5a5;
+}
+.form-input-block>textarea:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+	color:#a7a5a5;
+}
+.form-input-block>textarea:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+	color:#a7a5a5;
+}
+.form .icon-toLeft{
+	color: #a7a5a5;
+	position: absolute;
+	top: 2px;
+	right: 0;
+}
+
+/*单行超出隐藏*/
+.ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+/*多行超出隐藏*/
+.mellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* 阴影 */
+.shadow{
+	box-shadow: 1px 1px 8px rgba(0,0,0,.3);
+}
