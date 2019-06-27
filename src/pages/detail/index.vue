@@ -2,8 +2,9 @@
     <div>
         <Header :title="title[dbtype]" />
         <div class="content">
-            <ryDetail :data="data" v-if="dbtype == 'renkou'"></ryDetail>
-            <clDetail :data="data" v-if="dbtype=='jidongche'"></clDetail>
+            <ryDetail :data="data" :gxryList="gxryList" v-if="dbtype == 'renkou'"></ryDetail>
+            <czryDetail :data="data" v-if="dbtype == 'czrkxx'"></czryDetail>
+            <clDetail :data="data" v-if="dbtype == 'jidongche'"></clDetail>
         </div>
     </div>
 </template>
@@ -11,15 +12,20 @@
 import Header from '../../components/Header'
 import ryDetail from './ryDetail'
 import clDetail from './clDetail'
+import czryDetail from './czryDetail'
 
 export default {
     name: 'detail',
     data(){
         return {
             data: '',
+            gxryList: [],
             dbtype: this.$store.state.dbtype,
+            id: this.$route.params.id,
+            renyuan: 'renkou,czrkxx,zzrkxx,jzry,jsrxx',
             title: {
                 renkou: '人员详情',
+                czrkxx: '人员详情',
                 jidongche: '车辆详情'
             }
         }
@@ -27,20 +33,40 @@ export default {
     components: {
         Header,
         ryDetail,
-        clDetail
+        clDetail,
+        czryDetail
     },
     methods: {
         getDetail(){
             let data = {
-                dbtype: this.$store.state.dbtype,
-                id: this.$route.params.id,
+                dbtype: this.dbtype,
+                id: this.id,
                 usfzh: this.$api.usfzh
             }
             this.$post(this.$api.getDetails, JSON.stringify(data))
             .then( res => {
                 if(res.errCode == "000"){
-                    let data = res.records[0];
+                    let data = res.records[0]
                     this.data = data
+                    if(this.dbtype === 'renkou'){
+                        this.getGxry(data.SFZHM)
+                    }
+                }
+            })
+        },
+        getGxry(sfzhm){
+            let data = {
+                dbtype: 'gxryxx',
+                searchword: sfzhm,
+                pageNo: 1,
+                pageSize: 100,
+                usfzh: this.$api.usfzh
+            }
+            this.$post(this.$api.getList, JSON.stringify(data))
+            .then( res => {
+                if(res.errCode == "000"){
+                    let list = res.records
+                    this.gxryList = list
                 }
             })
         }
@@ -52,7 +78,7 @@ export default {
 </script>
 <style lang="less" scope>
     .content{
-        margin-top: 48px;
+        padding-top: 48px;
     }
 </style>
 

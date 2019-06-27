@@ -11,7 +11,7 @@
         </div>
         <pull-to @infinite-scroll="loadMoreData" :bottom-config="BOTTOM_DEFAULT_CONFIG" :is-bottom-bounce="false" :bottom-block-height="120">
 
-            <ryList :dataList="dataList" v-if="dbtype=='renkou'"></ryList>
+            <ryList :dataList="dataList" v-if="renyuan.indexOf(dbtype) !== -1"></ryList>
             <clList :dataList="dataList" v-if="dbtype=='jidongche'"></clList>
 
             <div @click="loadMoreData" class="loadMore">
@@ -45,6 +45,7 @@ export default {
                 triggerDistance: 10
             },
             dbtype: this.$store.state.dbtype,
+            renyuan: 'renkou,czrkxx,zzrkxx,jzry,jsrxx',
             searchword: this.$store.state.keyWord,
             pageNo: 1,
             pageSize: 10
@@ -91,10 +92,10 @@ export default {
             this.$post(this.$api.getList, JSON.stringify(data))
             .then(res => {
                 if(res.errCode == "000"){
-                    let data = res.records;
-                    this.dataList = this.dataList.concat(data);
-                    this.showLoading = false;
-                    this.loadMoreTip = data.length == 10 ? '加载更多' : '没有更多数据了';
+                    let data = res.records
+                    this.dataList = this.dataList.concat(data)
+                    this.showLoading = false
+                    this.loadMoreTip = data.length == 10 ? '加载更多' : '没有更多数据了'
                 }
             })
         },
@@ -105,25 +106,25 @@ export default {
                 this.pageNo++
                 this.getDataList()
             }else{
-                this.dataList = [];
-                this.loadMoreTip = '请输入搜索关键词';
-                this.showLoading = false;
-                alert('请输入搜索关键词');
+                this.dataList = []
+                this.loadMoreTip = '请输入搜索关键词'
+                this.showLoading = false
+                alert('请输入搜索关键词')
             }
         },
-        rightClick(){
-            this.dataList = [];
+        rightClick () {
+            this.dataList = []
             if(!this.searchword){
-                this.loadMoreTip = '请输入搜索关键词';
-                this.showLoading = false;
-                alert('请输入搜索关键词');
+                this.loadMoreTip = '请输入搜索关键词'
+                this.showLoading = false
+                alert('请输入搜索关键词')
                 return false;
             }else{
-                this.showLoading = true;
-                this.loadMoreTip = '加载中';
-                this.pageNo = 1;
-                this.getDataList();
-                this.$store.commit('KEYWORD', this.searchword);
+                this.showLoading = true
+                this.loadMoreTip = '加载中'
+                this.pageNo = 1
+                this.getDataList()
+                this.$store.commit('KEYWORD', this.searchword)
             }
         },
         back(){

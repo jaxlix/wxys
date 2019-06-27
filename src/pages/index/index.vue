@@ -4,7 +4,7 @@
       <div class="top">
         <span class="iconfont iconcha"></span>
         <span class="title">云搜</span>
-        <span @click="sheetVisible = true" class="iconfont iconguanyu"></span>
+        <span @click="show" class="iconfont iconguanyu"></span>
       </div>
     </div>
     <div class="content">
@@ -20,17 +20,66 @@
         </div>
       </nav>
       <div class="search">
-        <input v-model="kw" @change="changeKw" type="text" placeholder="请输入搜索关键字">
-        <span class="iconfont iconsousuo"></span>
+        <input class="search-inp" v-model="kw" type="text" :placeholder="this.navCheck === 'renkou' ? '请输入身份证/姓名' : '请输入车牌'">
+        <div v-if="navCheck === 'renkou'" class="search-select" @click="showPickerRenyuan = true">
+          <span class="text">{{defaultDataRenyuan[0].label}}</span>
+          <span class="xiasanjiao"></span>
+        </div>
+        <div v-if="navCheck === 'jidongche'" class="search-select" @click="showPicker = true">
+          <span class="text">{{defaultData[0].value}}{{defaultData[1].value}}</span>
+          <span class="xiasanjiao"></span>
+        </div>
       </div>
       <div class="btn-box">
         <button class="btn-block" @click="search">云搜一下</button>
       </div>
     </div>
-    <wv-actionsheet type="android" :actions="actions" cancel-text="取消" v-model="sheetVisible"/>
+    <!-- 选择车牌 -->
+    <vue-pickers
+      :show="showPicker"
+      :columns="columns"
+      :defaultData="defaultData"
+      :selectData="pickData"
+      @cancel="close"
+      @confirm="confirmFn"></vue-pickers>
+    <!-- 选择人员类型 -->
+    <vue-pickers
+      :show="showPickerRenyuan"
+      :columns="columnsRenyuan"
+      :defaultData="defaultDataRenyuan"
+      :selectData="pickDataRenyuan"
+      @cancel="closeRenyuan"
+      @confirm="confirmFnRenyuan"></vue-pickers>
+    <!-- 提示框 -->
+    <Alert :show.sync="showAlert" :msg="alertMsg" />
+    <!-- 菜单 -->
+    <div v-show="showDialog" @click="showDialog = false" class="dialog">
+      <div class="dialog-box">
+        <router-link class="dialog-link" to="/about">
+          <span class="iconfont iconren-copy"></span>
+          <span class="title">责任民警</span>
+        </router-link>
+        <router-link class="dialog-link" to="/about">
+          <span class="iconfont iconfankui"></span>
+          <span class="title">问题反馈</span>
+        </router-link>
+        <router-link class="dialog-link" to="/about">
+          <span class="iconfont iconbangzhu"></span>
+          <span class="title">帮助</span>
+        </router-link>
+        <router-link class="dialog-link" to="/about">
+          <span class="iconfont iconiconset0142"></span>
+          <span class="title">关于</span>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import Alert from '../../components/Alert'
+import vuePickers from 'vue-pickers'
+import chepai from '../../assets/chepai.json'
+
 export default {
   name: "index",
   data() {
@@ -47,47 +96,67 @@ export default {
       ],
       navCheck: "renkou",
       kw: "",
-      sheetVisible: false,
-      actions: [
-        {
-          name: "示例菜单1",
-          method: () => {
-            console.log("menu1 clicked");
-          }
-        },
-        {
-          name: "示例菜单2",
-          method: () => {
-            console.log("menu2 clicked");
-          }
-        },
-        {
-          name: "示例菜单3",
-          method: () => {
-            console.log("menu3 clicked");
-          }
-        }
-      ]
-    };
+      showAlert: false,
+      alertMsg: '',
+      showDialog: false,
+      showPicker: false,
+      columns: 2,
+      defaultData: [{"text": "苏", "value": "苏"},{"text": "B", "value": "B"}],
+      pickData: chepai,
+      showPickerRenyuan: false,
+      columnsRenyuan: 1,
+      defaultDataRenyuan: [{'text': '基本人员信息', 'value': 'renkou', 'label': '基本'}],
+      pickDataRenyuan: {'data1': [
+        {'text': '基本人员信息', 'value': 'renkou', 'label': '基本'},
+        {'text': '常住人员信息', 'value': 'czrkxx', 'label': '常住'},
+        {'text': '暂住人员信息', 'value': 'zzrkxx', 'label': '暂住'},
+        {'text': '寄住人员信息', 'value': 'jzry', 'label': '寄住'},
+        {'text': '驾驶人信息', 'value': 'jsrxx', 'label': '驾驶人'}
+      ]}
+    }
   },
-  components: {},
+  components: {
+    Alert,
+    vuePickers
+  },
   methods: {
-    selectNav(value) {
+    selectNav (value) {
       this.navCheck = value;
-      this.$store.commit("DBTYPE", value);
+      this.$store.commit('DBTYPE', value);
     },
-    search() {
+    search () {
       if (this.kw) {
-        this.$router.history.push("/list");
+        let kw = this.kw
+        if(this.navCheck === 'jidongche'){
+          kw = this.defaultData[0].value + this.defaultData[1].value + kw
+        }
+        this.$store.commit("KEYWORD", kw);
+        this.$router.history.push('/list');
       } else {
-        alert("请输入搜索关键字");
+        this.alertMsg = '请输入搜索关键字'
+        this.showAlert = true
       }
     },
-    changeKw() {
-      this.$store.commit("KEYWORD", this.kw);
+    show (){
+      this.showDialog = true
+    },
+    close () {
+      this.showPicker = false
+    },
+    confirmFn (val) {
+      this.showPicker = false
+      this.defaultData = [val.select1, val.select2]
+    },
+    closeRenyuan(){
+      this.showPickerRenyuan = false
+    },
+    confirmFnRenyuan (val) {
+      this.showPickerRenyuan = false
+      this.defaultDataRenyuan = [val.select1]
+      this.$store.commit('DBTYPE', val.select1.value)
     }
   }
-};
+}
 </script>
 <style lang="less" scoped>
 .top-box {
@@ -160,6 +229,32 @@ export default {
       font-size: 2.2rem;
       color: #999;
     }
+    .search-inp{
+      padding-left: 8rem;
+    }
+    .search-select{
+      display: flex;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      width: 8rem;
+      height: 50px;
+      line-height: 50px;
+      .text{
+        flex: 1;
+        padding-right: 10px;
+        font-size: 1.6rem;
+        color: #1a1a1a;
+        overflow: hidden;
+      }
+      .xiasanjiao{
+        position: relative;
+        top: 20px;
+        right: 10px;
+        border: .6rem solid transparent;
+        border-top-color: #999;
+      }
+    }
   }
   .nav-scroll {
     width: 100%;
@@ -205,5 +300,34 @@ export default {
     }
   }
 }
+.dialog{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  .dialog-box{
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+    .dialog-link{
+      display: flex;
+      width: 140px;
+      height: 40px;
+      line-height: 40px;
+      .iconfont{
+        width: 40px;
+      }
+      .title{
+        flex: 1;
+        border-bottom: 1px solid #f5f5f5;
+      }
+    }
+  }
+}
 </style>
-

@@ -8,9 +8,45 @@
             </div>
         </div>
         <div class="msg">
-            <h3>常住人口信息</h3>
+            <h3>机动车信息</h3>
             <div class="msg-list">
                 <ul>
+                    <li>
+                        <span>车辆类型</span>
+                        <span>{{data.CLLX}}</span>
+                    </li>
+                    <li>
+                        <span>车辆型号</span>
+                        <span>{{data.CLXH}}</span>
+                    </li>
+                    <li>
+                        <span>中文品牌</span>
+                        <span>{{data.CLPP1}}</span>
+                    </li>
+                    <li>
+                        <span>国产/进口</span>
+                        <span>{{data.GCJK}}</span>
+                    </li>
+                    <li>
+                        <span>制造国</span>
+                        <span>{{data.ZZG}}</span>
+                    </li>
+                    <li>
+                        <span>核定载客</span>
+                        <span>{{data.HDZK}}</span>
+                    </li>
+                    <li>
+                        <span>排量</span>
+                        <span>{{data.PL}}</span>
+                    </li>
+                    <li>
+                        <span>燃料种类</span>
+                        <span>{{data.RLZL}}</span>
+                    </li>
+                    <li>
+                        <span>发证机关</span>
+                        <span>{{data.FZJG}}</span>
+                    </li>
                     <li>
                         <span>号牌种类</span>
                         <span>{{data.HPZL}}</span>
@@ -32,6 +68,30 @@
                         <span>{{data.FDJH}}</span>
                     </li>
                     <li>
+                        <span>初次登记日期</span>
+                        <span>{{data.CCDJRQ}}</span>
+                    </li>
+                    <li>
+                        <span>最近定检日期</span>
+                        <span>{{data.DJRQ}}</span>
+                    </li>
+                    <li>
+                        <span>检验有效期</span>
+                        <span>{{data.YXQZ}}</span>
+                    </li>
+                    <li>
+                        <span>保险终止日期</span>
+                        <span>{{data.BXZZRQ}}</span>
+                    </li>
+                    <li>
+                        <span>抵押标记</span>
+                        <span>{{data.DYBJ}}</span>
+                    </li>
+                    <li>
+                        <span>出厂日期</span>
+                        <span>{{data.CCRQ}}</span>
+                    </li>
+                    <li>
                         <span>车辆所有人</span>
                         <span>{{data.SYR}}</span>
                     </li>
@@ -40,12 +100,24 @@
                         <span>{{data.SFZHM}}</span>
                     </li>
                     <li>
-                        <span>地址</span>
+                        <span>电话</span>
+                        <span>{{data.SJHM}}</span>
+                    </li>
+                    <li>
+                        <span>住所行政区划</span>
+                        <span>{{data.ZSXZQH}}</span>
+                    </li>
+                    <li>
+                        <span>住所详细地址</span>
                         <span>{{data.ZSXXDZ}}</span>
                     </li>
                     <li>
-                        <span>电话</span>
-                        <span>{{data.SJHM}}</span>
+                        <span>暂住行政区划</span>
+                        <span>{{data.ZZXZQH}}</span>
+                    </li>
+                    <li>
+                        <span>暂住详细地址</span>
+                        <span>{{data.ZZXXDZ}}</span>
                     </li>
                 </ul>
             </div>

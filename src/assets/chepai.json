@@ -1,0 +1,225 @@
+{"data1":[
+    {
+        "text": "京",
+        "value": "京"
+    },
+    {
+        "text": "冀",
+        "value": "冀"
+    },
+    {
+        "text": "辽",
+        "value": "辽"
+    },
+    {
+        "text": "皖",
+        "value": "皖"
+    },
+    {
+        "text": "苏",
+        "value": "苏"
+    },
+    {
+        "text": "鄂",
+        "value": "鄂"
+    },
+    {
+        "text": "晋",
+        "value": "晋"
+    },
+    {
+        "text": "吉",
+        "value": "吉"
+    },
+    {
+        "text": "粤",
+        "value": "粤"
+    },
+    {
+        "text": "宁",
+        "value": "宁"
+    },
+    {
+        "text": "豫",
+        "value": "豫"
+    },
+    {
+        "text": "黑",
+        "value": "黑"
+    },
+    {
+        "text": "鲁",
+        "value": "鲁"
+    },
+    {
+        "text": "浙",
+        "value": "浙"
+    },
+    {
+        "text": "桂",
+        "value": "桂"
+    },
+    {
+        "text": "蒙",
+        "value": "蒙"
+    },
+    {
+        "text": "闽",
+        "value": "闽"
+    },
+    {
+        "text": "川",
+        "value": "川"
+    },
+    {
+        "text": "渝",
+        "value": "渝"
+    },
+    {
+        "text": "津",
+        "value": "津"
+    },
+    {
+        "text": "云",
+        "value": "云"
+    },
+    {
+        "text": "湘",
+        "value": "湘"
+    },
+    {
+        "text": "新",
+        "value": "新"
+    },
+    {
+        "text": "赣",
+        "value": "赣"
+    },
+    {
+        "text": "甘",
+        "value": "甘"
+    },
+    {
+        "text": "陕",
+        "value": "陕"
+    },
+    {
+        "text": "贵",
+        "value": "贵"
+    },
+    {
+        "text": "青",
+        "value": "青"
+    },
+    {
+        "text": "藏",
+        "value": "藏"
+    },
+    {
+        "text": "琼",
+        "value": "琼"
+    },
+    {
+        "text": "沪",
+        "value": "沪"
+    }
+],
+"data2": [
+    {
+        "text": "A",
+        "value": "A"
+    },
+    {
+        "text": "B",
+        "value": "B"
+    },
+    {
+        "text": "C",
+        "value": "C"
+    },
+    {
+        "text": "D",
+        "value": "D"
+    },
+    {
+        "text": "E",
+        "value": "E"
+    },
+    {
+        "text": "F",
+        "value": "F"
+    },
+    {
+        "text": "G",
+        "value": "G"
+    },
+    {
+        "text": "H",
+        "value": "H"
+    },
+    {
+        "text": "J",
+        "value": "J"
+    },
+    {
+        "text": "K",
+        "value": "K"
+    },
+    {
+        "text": "L",
+        "value": "L"
+    },
+    {
+        "text": "M",
+        "value": "M"
+    },
+    {
+        "text": "N",
+        "value": "N"
+    },
+    {
+        "text": "P",
+        "value": "P"
+    },
+    {
+        "text": "Q",
+        "value": "Q"
+    },
+    {
+        "text": "R",
+        "value": "R"
+    },
+    {
+        "text": "S",
+        "value": "S"
+    },
+    {
+        "text": "T",
+        "value": "T"
+    },
+    {
+        "text": "U",
+        "value": "U"
+    },
+    {
+        "text": "V",
+        "value": "V"
+    },
+    {
+        "text": "W",
+        "value": "W"
+    },
+    {
+        "text": "X",
+        "value": "X"
+    },
+    {
+        "text": "Y",
+        "value": "Y"
+    },
+    {
+        "text": "Z",
+        "value": "Z"
+    }
+]
+}

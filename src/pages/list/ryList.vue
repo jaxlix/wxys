@@ -33,6 +33,7 @@ export default {
             .sfzhm{
                 padding-bottom: 10px;
                 color: #1a1a1a;
+                font-size: 1.6rem;
             }
             p{
                 span{
