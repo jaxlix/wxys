@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -26,7 +26,7 @@ export default new Router({
       component: () => import('../pages/detail/index.vue')
     },
     {
-      path: '/contact',
+      path: '/contact/:sfzh',
       name: 'contact',
       component: () => import('../pages/detail/contact.vue')
     },

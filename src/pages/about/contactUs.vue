@@ -2,14 +2,14 @@
     <div>
         <Header title="联系我们"></Header>
         <div class="contact">
-            <p class="item">科室电话：<span>0000-88888888</span></p>
-            <p class="item">运维支持：<span>13510218888</span></p>
+            <p class="item">科室电话：<span><a href="tel:0755-84464985">0755-84464985</a></span></p>
+            <p class="item">运维支持：<span><a href="tel:0755-84464985">0755-84464985</a></span></p>
             <p class="item">深圳市星火电子工程公司</p>
         </div>
     </div>
 </template>
 <script>
-import Header from '../../components/Header';
+import Header from '../../components/Header'
 
 export default {
     components: {

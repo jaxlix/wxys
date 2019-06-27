@@ -4,6 +4,8 @@
         <div class="content">
             <ryDetail :data="data" :gxryList="gxryList" v-if="dbtype == 'renkou'"></ryDetail>
             <czryDetail :data="data" v-if="dbtype == 'czrkxx'"></czryDetail>
+            <zzryDetail :data="data" v-if="dbtype == 'zzrkxx'"></zzryDetail>
+            <jsrDetail :data="data" v-if="dbtype == 'jsrxx'"></jsrDetail>
             <clDetail :data="data" v-if="dbtype == 'jidongche'"></clDetail>
         </div>
     </div>
@@ -13,6 +15,8 @@ import Header from '../../components/Header'
 import ryDetail from './ryDetail'
 import clDetail from './clDetail'
 import czryDetail from './czryDetail'
+import jsrDetail from './jsrDetail'
+import zzryDetail from './zzryDetail'
 
 export default {
     name: 'detail',
@@ -26,6 +30,9 @@ export default {
             title: {
                 renkou: '人员详情',
                 czrkxx: '人员详情',
+                zzrkxx: '人员详情',
+                jzry: '人员详情',
+                jsrxx: '人员详情',
                 jidongche: '车辆详情'
             }
         }
@@ -34,7 +41,9 @@ export default {
         Header,
         ryDetail,
         clDetail,
-        czryDetail
+        czryDetail,
+        zzryDetail,
+        jsrDetail
     },
     methods: {
         getDetail(){

@@ -1,13 +1,13 @@
 <template>
   <div id="index">
     <div class="top-box">
-      <div class="top">
+      <div class="index-top">
         <span class="iconfont iconcha"></span>
         <span class="title">云搜</span>
         <span @click="show" class="iconfont iconguanyu"></span>
       </div>
     </div>
-    <div class="content">
+    <div class="index-content">
       <nav class="nav-scroll">
         <div class="nav-scroll-box">
           <a
@@ -110,7 +110,7 @@ export default {
         {'text': '基本人员信息', 'value': 'renkou', 'label': '基本'},
         {'text': '常住人员信息', 'value': 'czrkxx', 'label': '常住'},
         {'text': '暂住人员信息', 'value': 'zzrkxx', 'label': '暂住'},
-        {'text': '寄住人员信息', 'value': 'jzry', 'label': '寄住'},
+        // {'text': '寄住人员信息', 'value': 'jzry', 'label': '寄住'},
         {'text': '驾驶人信息', 'value': 'jsrxx', 'label': '驾驶人'}
       ]}
     }
@@ -121,8 +121,8 @@ export default {
   },
   methods: {
     selectNav (value) {
-      this.navCheck = value;
-      this.$store.commit('DBTYPE', value);
+      this.navCheck = value
+      this.$store.commit('DBTYPE', value)
     },
     search () {
       if (this.kw) {
@@ -130,8 +130,8 @@ export default {
         if(this.navCheck === 'jidongche'){
           kw = this.defaultData[0].value + this.defaultData[1].value + kw
         }
-        this.$store.commit("KEYWORD", kw);
-        this.$router.history.push('/list');
+        this.$store.commit("KEYWORD", kw)
+        this.$router.history.push('/list')
       } else {
         this.alertMsg = '请输入搜索关键字'
         this.showAlert = true
@@ -168,7 +168,7 @@ export default {
   height: 260px;
   background: url("../../assets/banner.png") no-repeat center center;
   background-size: 100% 100%;
-  .top {
+  .index-top {
     height: 48px;
     line-height: 48px;
     text-align: left;
@@ -197,7 +197,7 @@ export default {
     }
   }
 }
-.content {
+.index-content {
   position: fixed;
   top: 200px;
   left: 0;

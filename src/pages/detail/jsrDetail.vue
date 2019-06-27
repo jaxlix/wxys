@@ -6,10 +6,10 @@
                 <p class="name">{{data.XM}}</p>
                 <p class="sfzh">{{data.SFZHM}}</p>
             </div>
-            <router-link v-show="data.SFZHM" :to="'/contact/'+data.SFZHM">联系方式</router-link>            
+            <router-link :to="'/contact/'+data.SFZHM">联系方式</router-link>
         </div>
         <div class="msg">
-            <h3>常住人口信息</h3>
+            <h3>驾驶员信息</h3>
             <div class="msg-list">
                 <ul>
                     <li>
@@ -25,56 +25,47 @@
                         <span>{{data.SFZHM}}</span>
                     </li>
                     <li>
-                        <span>年龄</span>
-                        <span>{{data.AGE}}</span>
+                        <span>出生日期</span>
+                        <span>{{data.CSRQ}}</span>
                     </li>
                     <li>
-                        <span>与户主关系</span>
-                        <span>{{data.YHZGX}}</span>
+                        <span>联系电话</span>
+                        <span>{{data.LXDH}}</span>
                     </li>
                     <li>
-                        <span>户号</span>
-                        <span>{{data.HH}}</span>
+                        <span>审验日期</span>
+                        <span>{{data.SYRQ}}</span>
                     </li>
                     <li>
-                        <span>户口类别</span>
-                        <span>{{data.HKLB}}</span>
+                        <span>清分日期</span>
+                        <span>{{data.QFRQ}}</span>
                     </li>
                     <li>
-                        <span>何地迁入</span>
-                        <span>{{data.HDQR}}</span>
+                        <span>准驾车型</span>
+                        <span>{{data.ZJCX}}</span>
                     </li>
                     <li>
-                        <span>何详址迁入</span>
-                        <span>{{data.HXZQR}}</span>
+                        <span>档案编号</span>
+                        <span>{{data.DABH}}</span>
                     </li>
                     <li>
-                        <span>变动详址</span>
-                        <span>{{data.BDXZ}}</span>
+                        <span>发证日期</span>
+                        <span>{{data.CCLZRQ}}</span>
                     </li>
                     <li>
-                        <span>户住址编号</span>
-                        <span>{{data.HZZBH}}</span>
+                        <span>有效期</span>
+                        <span>{{data.YXQZ}}</span>
                     </li>
                     <li>
-                        <span>人员状态</span>
-                        <span>{{data.RYZT}}</span>
+                        <span>登记住所地址</span>
+                        <span>{{data.DJZSXXDZ}}</span>
                     </li>
                     <li>
-                        <span>父亲</span>
-                        <span>{{data.FQXM}}</span>
+                        <span>联系住所地址</span>
+                        <span>{{data.LXZSXXDZ}}</span>
                     </li>
-                    <li>
-                        <span>父亲身份证号</span>
-                        <span>{{data.FQSFZH}}</span>
-                    </li>
-                     <li>
-                        <span>母亲</span>
-                        <span>{{data.MQXM}}</span>
-                    </li>
-                     <li>
-                        <span>母亲身份证号</span>
-                        <span>{{data.MQSFZH}}</span>
+                    <li class="touxiang">
+                        <img src="../../assets/tx.png" alt=""/>
                     </li>
                 </ul>
             </div>
@@ -83,8 +74,9 @@
 </template>
 <script>
 export default {
-    data () {
+    data(){
         return {
+
         }
     },
     props: ['data']

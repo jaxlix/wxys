@@ -19,13 +19,14 @@
                 <span>{{loadMoreTip}}</span>
             </div>
         </pull-to>
+        <Alert :show.sync="showAlert" :msg="alertMsg" />
     </div>
 </template>
 <script>
-import PullTo from 'vue-pull-to';
-import ryList from './ryList';
-import clList from './clList';
-// import {mapGetters} from 'vuex';
+import PullTo from 'vue-pull-to'
+import ryList from './ryList'
+import clList from './clList'
+import Alert from '../../components/Alert'
 
 export default {
     name: 'list',
@@ -48,7 +49,9 @@ export default {
             renyuan: 'renkou,czrkxx,zzrkxx,jzry,jsrxx',
             searchword: this.$store.state.keyWord,
             pageNo: 1,
-            pageSize: 10
+            pageSize: 10,
+            showAlert: false,
+            alertMsg: ''
         }
     },
     beforeRouteEnter (to, from, next) {
@@ -61,24 +64,11 @@ export default {
             }
         })
     },
-    // computed: {
-    //     ...mapGetters({
-    //         dbtype: 'dbtype',
-    //         searchword: 'searchword'
-    //     })
-    // },
-    // watch: {
-    //     dbtype(){
-    //         this.getDataList()
-    //     },
-    //     searchword(){
-    //         this.getDataList()
-    //     }
-    // },
     components: {
         PullTo,
         ryList,
-        clList
+        clList,
+        Alert
     },
     methods: {
         getDataList(){
@@ -109,15 +99,17 @@ export default {
                 this.dataList = []
                 this.loadMoreTip = '请输入搜索关键词'
                 this.showLoading = false
-                alert('请输入搜索关键词')
+                this.alertMsg = '请输入搜索关键词'
+                this.showAlert = true
             }
         },
         rightClick () {
             this.dataList = []
-            if(!this.searchword){
+            if(!this.searchword) {
                 this.loadMoreTip = '请输入搜索关键词'
                 this.showLoading = false
-                alert('请输入搜索关键词')
+                this.alertMsg = '请输入搜索关键词'
+                this.showAlert = true
                 return false;
             }else{
                 this.showLoading = true
@@ -132,12 +124,13 @@ export default {
         }
     },
     mounted(){
-        this.searchword = this.$store.state.keyWord;
+        this.searchword = this.$store.state.keyWord
         if(!this.$store.state.keyWord){
-            this.loadMoreTip = '请输入搜索关键词';
+            this.loadMoreTip = '请输入搜索关键词'
             this.showLoading = false;
-            alert('请输入搜索关键词');
-            return false;
+            this.alertMsg = '请输入搜索关键词'
+            this.showAlert = true
+            return false
         }
         this.getDataList()
     }
@@ -146,43 +139,43 @@ export default {
 <style lang="less" scoped>
     #list{
         padding-top: 48px;
-    }
-    .head{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 48px;
-        display: flex;
-        line-height: 48px;
-        background-color: #3274A4;
-        color: #fff;
-        z-index: 100;
-    }
-    .head-left{
-        width: 50px;
-    }
-    .head-title{
-        flex:1;
-        .input{
+        .head{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            display: flex;
+            line-height: 48px;
+            background-color: #3274A4;
+            color: #fff;
+            z-index: 100;
+        }
+        .head-left{
+            width: 50px;
+        }
+        .head-title{
+            flex:1;
+            .input{
+                width: 100%;
+                height: 30px;
+                background-color:transparent;
+                border-bottom: 1px solid #f5f5f5;
+                color: #fff;
+            }
+        }
+        .head-right{
+            width: 50px;
+        }
+        .search-inp{
             width: 100%;
             height: 30px;
-            background-color:transparent;
-            border-bottom: 1px solid #f5f5f5;
-            color: #fff;
+            border-radius: 15px;
         }
-    }
-    .head-right{
-        width: 50px;
-    }
-    .search-inp{
-        width: 100%;
-        height: 30px;
-        border-radius: 15px;
-    }
-    .loadMore{
-        height: 50px;
-        line-height: 50px;
+        .loadMore{
+            height: 50px;
+            line-height: 50px;
+        }
     }
 </style>
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="top">
-            <img src="../../assets/tx.png" alt=""/>
+            <img src="../../assets/car.png" alt=""/>
             <div>
                 <p class="name">{{data.HPHM}}</p>
                 <p class="sfzh">{{data.CLSBDH}}</p>

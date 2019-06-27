@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="top">
-            <img src="../../assets/tx.png" alt=""/>
+            <img src="../../assets/mr.png" alt=""/>
             <div>
                 <p class="name">{{data.XM}}</p>
                 <p class="sfzh">{{data.SFZHM}}</p>
             </div>
-            <router-link to="/contact">联系方式</router-link>
+            <router-link v-show="data.SFZHM" :to="'/contact/'+data.SFZHM">联系方式</router-link>
         </div>
         <div class="msg">
             <h3>基本信息</h3>

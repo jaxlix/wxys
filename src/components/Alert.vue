@@ -1,11 +1,11 @@
 <template>
     <transition name="fade">
-        <div v-if="show" class="alert">
+        <div v-if="show" id="alert">
             <div class="alert-box">
-                <h3 class="title">{{title || '提示'}}</h3>
-                <div class="msg">{{msg}}</div>
-                <div class="btns">
-                    <a @click="confirm" class="queding" href="javascript:void(0)">确定</a>
+                <h3 class="alert-title">{{title || '提示'}}</h3>
+                <div class="alert-msg">{{msg}}</div>
+                <div class="alert-btns">
+                    <a @click="confirm" class="alert-queding" href="javascript:void(0)">确定</a>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    .alert{
+    #alert{
         position: fixed;
         top: 0;
         left: 0;
@@ -41,24 +41,24 @@ export default {
             width: 80%;
             border-radius: 6px;
             background-color: #fff;
-            .title{
+            .alert-title{
                 padding: 2rem 2.5rem .8rem 2.5rem;
                 line-height: 2rem;
                 font-size: 1.6rem;
                 text-align: center;
             }
-            .msg{
+            .alert-msg{
                 padding: 0 2.4rem 1.2rem 2.4rem;
                 min-height: 40px;
                 color: #999;
                 text-align: center;
                 font-size: 1.5rem;
             }
-            .btns{
+            .alert-btns{
                 display: flex;
                 height: 48px;
                 border-top: 1px solid #f5f5f5;
-                .queding{
+                .alert-queding{
                     flex: 1;
                     color: #f90;
                     text-align: center;

@@ -1,5 +1,5 @@
 <template>
-    <div class="head">
+    <div id="head">
         <div class="head-left" @click="back"><i class="iconfont iconfanhui"></i></div>
         <div class="head-title" v-html="title"></div>
         <div class="head-right" v-html="right"></div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-    .head{
+    #head{
         position: fixed;
         top: 0;
         left: 0;
@@ -33,6 +33,7 @@ export default {
         background-color: #3274A4;
         color: #fff;
         z-index: 100;
+        
     }
     .head-left{
         width: 50px;
